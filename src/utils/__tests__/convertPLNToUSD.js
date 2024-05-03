@@ -20,8 +20,6 @@ describe("ConvertPLNtoUSD", () => {
   });
 });
 
-// Sprawdzić dla kilku wartości, czy dla dobrych inputów zwróci dobry wynik w dobrym formacie.
-
 // Sprawdzić, czy dla argumentów, które nie są tekstem ani liczbą, funkcja wyrzuci błąd.
 describe("ConvertPLNtoUSD", () => {
   it("for nonstring nonnumber arguments should return 'Error'", () => {

@@ -1,40 +1,51 @@
-import { useState } from 'react';
-import TextInput from './../TextInput/TextInput';
-import Select from './../Select/Select';
-import Button from './../Button/Button';
-import styles from './CurrencyForm.module.scss';
+import { useState } from "react";
+import TextInput from "./../TextInput/TextInput";
+import Select from "./../Select/Select";
+import Button from "./../Button/Button";
+import styles from "./CurrencyForm.module.scss";
 
 const CurrencyForm = ({ action }) => {
-  const [amount, setAmount] = useState('');
-  const [from, setFrom] = useState('PLN');
-  const [to, setTo] = useState('PLN');
+  const [amount, setAmount] = useState("");
+  const [from, setFrom] = useState("PLN");
+  const [to, setTo] = useState("PLN");
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    action({ 
+    setAmount("");
+    action({
       amount: parseInt(amount),
       from,
       to,
     });
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <label>
         <span>Amount:</span>
-        <TextInput type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+        <TextInput
+          data-testid="amount"
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
       </label>
       <label>
         <span>From</span>
-        <Select onChange={e => setFrom(e.target.value)}>
+        <Select
+          data-testid="currency-from"
+          onChange={(e) => setFrom(e.target.value)}
+        >
           <option value="PLN">PLN</option>
           <option value="USD">USD</option>
         </Select>
       </label>
       <label>
         <span>To</span>
-        <Select onChange={e => setTo(e.target.value)}>
+        <Select
+          data-testid="currency-to"
+          onChange={(e) => setTo(e.target.value)}
+        >
           <option value="PLN">PLN</option>
           <option value="USD">USD</option>
         </Select>
